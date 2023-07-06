@@ -1,0 +1,14 @@
+.lmj-footer {
+    background-color: #2b2e4b;
+    color: white;
+    font-size: 10px;
+    padding: 19px 0 13px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.textFooter {
+    margin-left: 20px;
+}
