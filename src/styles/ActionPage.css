@@ -1,0 +1,49 @@
+.lmj-banner {
+    color: black;
+    text-align: right;
+    padding: 32px;
+    border-bottom: solid 1px #abb8c3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.liste {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-top: 4px solid red;
+  box-shadow: 0 2px 64px 0 rgba(193,194,207,.5);
+  padding: 0px 30px;
+}
+
+.btn {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.lmj-footer {
+    background-color: #2b2e4b;
+    color: white;
+    font-size: 10px;
+    padding: 19px 0 13px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.textFooter {
+    margin-left: 20px;
+}
+
+.nameProd{
+    cursor: pointer;
+}

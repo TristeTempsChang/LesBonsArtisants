@@ -4,6 +4,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import PersonIcon from '@mui/icons-material/Person';
+import { Link } from 'react-router-dom'
 
 const ColorButton = styled(Button)({
     color: '#1b2150',
@@ -22,7 +23,7 @@ const ColorButton = styled(Button)({
 function Banner() {
     return (
         <div className='lmj-banner'>
-            <ColorButton variant="outlined" startIcon={<PersonIcon />}>Connectez-vous</ColorButton>
+            <Link to="/authentication"><ColorButton variant="outlined" startIcon={<PersonIcon />}>Connectez-vous</ColorButton></Link>
             <div className='banner-title'>
                 <img src={logo} alt="logo" className='lmj-logo'/>
                 <h1>| Test technique</h1>

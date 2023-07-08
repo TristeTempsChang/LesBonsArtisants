@@ -28,9 +28,19 @@ var router = express.Router();
 
 router.route('/product')
     .get(productController.getProduct)
+    .post(productController.postProduct)
+
+router.route('/productById/:prod_id')
+    .get(productController.getProdById)
+    .post(productController.updateProduct)
+    .delete(productController.deleteProduct)
 
 router.route('/user')
     .get(userController.getUser)
+    .post(userController.postUser)
+
+router.route('/login')
+    .post(userController.login)
 
 app.use('/api', router);
 
