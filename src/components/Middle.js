@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 
 const ColorButton = styled(Button)({
     color: 'red',
@@ -74,7 +75,7 @@ function Middle(){
             <br />
             <br />
             <div className="buttonContainer">
-                <ColorButton variant="outlined">Voir plus</ColorButton>
+            <Link to='/home'><ColorButton variant="outlined">Voir plus</ColorButton></Link>
             </div>
             <br />
             <br />

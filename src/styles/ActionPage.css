@@ -13,23 +13,19 @@
 }
 
 .liste {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   border-top: 4px solid red;
   box-shadow: 0 2px 64px 0 rgba(193,194,207,.5);
   padding: 0px 30px;
 }
 
-.btn {
-  position: absolute;
-  top: 85%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.ensembleAction{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.lmj-footer {
+.footer {
     background-color: #2b2e4b;
     color: white;
     font-size: 10px;

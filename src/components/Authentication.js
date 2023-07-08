@@ -21,6 +21,7 @@ const defaultTheme = createTheme();
 function SignIn() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({ email: '', password: '' });
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const handleChange = (event) => {
       setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -30,7 +31,13 @@ function SignIn() {
       event.preventDefault();
       axios.post('http://localhost:4200/api/login', formData)
         .then(response => {
+          const token = response.data.token;
+          const userId = response.data.userId;
+          localStorage.setItem('token', token);
+          localStorage.setItem('userId', userId);
+          setIsAuthenticated(true);
           navigate('/home');
+          window.location.reload();
           console.log(response.data);
           console.log("CONNEXION REUSSI");
         })

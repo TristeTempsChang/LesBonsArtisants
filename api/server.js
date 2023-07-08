@@ -42,6 +42,9 @@ router.route('/user')
 router.route('/login')
     .post(userController.login)
 
+router.route('/userById/:user_id')
+    .get(userController.getUserById)
+
 app.use('/api', router);
 
 app.listen(port, () => {

@@ -1,4 +1,5 @@
 var Users = require('../models/userModel');
+var jwt = require('jsonwebtoken');
 
 exports.getUser = function(req,res) {
     Users.find()
@@ -39,8 +40,22 @@ exports.login = function(req, res) {
             }
             res.status(200).json({
                 userId: user._id,
-                token: 'TOKEN'
+                token: jwt.sign(
+                    { userId: user._id },
+                    'RANDOM_TOKEN_SECRET',
+                    { expiresIn: '24h' }
+                )
             });
         })
         .catch(error => res.status(500).json({ error }));
 };
+
+exports.getUserById = function(req,res) {
+    Users.findById(req.params.user_id)
+         .then(users => {
+            res.status(200).json({ success: true, message: "L'utilisateur a été trouvé avec succès", data: users }).status(200);
+         })
+         .catch(err => {
+            res.status(500).json({ success: false, message: err });
+         });
+}

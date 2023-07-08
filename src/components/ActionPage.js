@@ -176,6 +176,22 @@ function ActionPage(){
               });
           };
 
+          const [userName, setUserName] = useState('');
+
+          useEffect(() => {
+            const userId = localStorage.getItem('userId');
+        
+            axios.get(`http://localhost:4200/api/userById/${userId}`)
+              .then(response => {
+                const userData = response.data.data;
+                const userName = userData ? userData.username : 'Unknown User';
+                setUserName(userName);
+              })
+              .catch(error => {
+                console.error(error);
+              });
+          }, []);
+
     return(
         <div>
             <div className='lmj-banner'>
@@ -184,44 +200,46 @@ function ActionPage(){
                     <Avatar className='icon'>
                         <PersonIcon />
                     </Avatar>
-                        <p>Compte User</p>
+                        <p>{userName}</p>
                 </div>
             </div>
-            <div className='liste'>
-                <h2>Liste des produits</h2>
-                {data.map(product => (
-                    <List
-                    sx={{
-                        width: '100%',
-                        maxWidth: 360,
-                        bgcolor: 'background.paper',
-                        position: 'relative',
-                        overflow: 'auto',
-                        maxHeight: 300,
-                        '& ul': { padding: 0 },
-                    }}
-                    subheader={<li />}
-                    >
-                        <li>
-                            <ul className='product'>
-                                <ListItem key={product._id}>
-                                    <ListItemText className='nameProd' onClick={() => handleClickOpen4(product._id)} primary={product.name} />
-                                    <div className='Product'>
-                                        <IconButton onClick={() => handleClickOpen3(product._id)} aria-label="comment">
-                                            <DeleteIcon />
-                                        </IconButton>
-                                        <IconButton onClick={() =>handleClickOpen2(product._id)} aria-label="comment">
-                                            <ModeEditIcon />
-                                        </IconButton>
-                                    </div>
-                                </ListItem>
-                            </ul>
-                        </li>
-                    </List>
-                ))}
+            <div className='ensembleAction'>
+                <div className='liste'>
+                    <h2>Liste des produits</h2>
+                    {data.map(product => (
+                        <List
+                        sx={{
+                            width: '100%',
+                            maxWidth: 360,
+                            bgcolor: 'background.paper',
+                            position: 'relative',
+                            overflow: 'auto',
+                            maxHeight: 300,
+                            '& ul': { padding: 0 },
+                        }}
+                        subheader={<li />}
+                        >
+                            <li>
+                                <ul className='product'>
+                                    <ListItem key={product._id}>
+                                        <ListItemText className='nameProd' onClick={() => handleClickOpen4(product._id)} primary={product.name} />
+                                        <div className='Product'>
+                                            <IconButton onClick={() => handleClickOpen3(product._id)} aria-label="comment">
+                                                <DeleteIcon />
+                                            </IconButton>
+                                            <IconButton onClick={() =>handleClickOpen2(product._id)} aria-label="comment">
+                                                <ModeEditIcon />
+                                            </IconButton>
+                                        </div>
+                                    </ListItem>
+                                </ul>
+                            </li>
+                        </List>
+                    ))}
+                </div>
+                <ColorButton className='btn' variant="outlined" onClick={handleClickOpen} startIcon={<AddIcon />}>Ajouter un produit</ColorButton>
             </div>
-            <ColorButton className='btn' variant="outlined" onClick={handleClickOpen} startIcon={<AddIcon />}>Ajouter un produit</ColorButton>
-            <div className='lmj-footer'>
+            <div className='footer'>
                 <p className='textFooter'>© 2023, Les Bons Artisans - Tous droits réservés</p>
             </div>
             <Dialog open={open} onClose={handleClose}>
